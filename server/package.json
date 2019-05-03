@@ -1,5 +1,5 @@
 {
-  "name": "node-react-docker-compose",
+  "name": "prueba-tecnica-teatro-U-distrital",
   "version": "1.0.0",
   "description": "A reference for running a node server and create-react-app app via docker-compose.",
   "main": "src/index.js",
@@ -7,10 +7,16 @@
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Peter Coles",
-  "license": "MIT",
+  "author": "Soulfilip",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "bcryptjs": "2.4.3",
+    "debug": "~2.6.9",
+    "http-errors": "1.6.2",
+    "jsonwebtoken": "8.4.0",
+    "morgan": "1.9.1",
+    "mysql2": "1.6.4",
+    "sequelize": "4.42.0"
   },
   "devDependencies": {
     "nodemon": "^1.14.7"

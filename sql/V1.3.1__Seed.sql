@@ -1,0 +1,4 @@
+INSERT INTO `mvw`.`teatro_responsables` (`nombres`, `apellidos`, `email`, `cargo`, `telefono`, `fecha_creacion`) VALUES ('David', 'Pinzón', 'davidpinzon@mail.com', 'Estudiante', '321321321', '2019-05-02 00:26:00');
+INSERT INTO `mvw`.`teatro_responsables` (`nombres`, `apellidos`, `email`, `cargo`, `telefono`, `fecha_creacion`) VALUES ('Fernando', 'Pautt', 'fpautt@mail.com', 'Invitado', '333222111', '2019-05-02 12:11:05');
+INSERT INTO `mvw`.`teatro_responsables` (`nombres`, `apellidos`, `email`, `cargo`, `telefono`, `fecha_creacion`) VALUES ('Carlos', 'Aranque', 'carlosAr@mail.com', 'Profesor', '123456789', '2019-05-02 12:13:45');
+INSERT INTO `mvw`.`teatro_responsables` (`nombres`, `apellidos`, `email`, `cargo`, `telefono`, `fecha_creacion`) VALUES ('Sofía ', 'Vejarano', 'vejarano90@mail.com', 'Invitado', '2244466668', '2019-05-02 11:12:03');
