@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './compiled/App.css';
 import TheatreActivities from './Components/TheatreActivities'
+import {Footer} from './Components/Footer'
 
 class App extends Component {
   constructor() {
@@ -42,10 +43,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Teatro - Universidad Distrital</h1>
+          <p className="tangerine">El teatro es tan infinitamente fascinante, porque es muy accidental, tanto como la vida.</p>
+          <span className="tangerine">Arthur Miller</span>
         </header>
         <TheatreActivities />
-        <p>{this.state.message || 'No message'}</p>
+        <Footer />
       </div>
     );
   }

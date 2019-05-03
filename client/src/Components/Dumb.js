@@ -19,6 +19,9 @@ export const Actividad = ({actividad={}, responsable={}, sala ={}, filterRespons
         <p><strong>F. Límite:</strong> {fechaLimite}</p>
       </div>
       <div>
+        <span>{actividad.estado}</span>
+      </div>
+      <div>
         <span><a href="#hey">{responsable.nombres} {responsable.apellidos}</a></span>
         <Responsable responsable={responsable}/>
       </div>
@@ -64,6 +67,7 @@ export const ActivitiesHeader =({responsables={}, salas={}, onChangeResponsable=
         <div><strong><p>ID</p></strong></div>
         <div><strong><p>Nombre y Descripción</p></strong></div>
         <div><strong><p>Fecha de Creación & Fecha límite</p></strong></div>
+        <div><strong><p>Estado</p></strong></div>
         <div>
           <strong><p>Responsable</p></strong>
           <select name ="filterResponsable" onChange={(filterId) => onChangeResponsable(filterId)}>

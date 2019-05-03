@@ -42,7 +42,7 @@ class TheatreActivities extends Component{
     return(
       <section>
         <h2>Actividades</h2>
-        <p>{this.state.responsable}</p>
+        <p>Bienvenidos para listar las actividades por Responsable, seleccione un responsable del menú desplegable:</p>
         <ActivitiesHeader responsables={responsables}
                           salas={rooms}
                           onChangeResponsable={modifyFilterResponsable}

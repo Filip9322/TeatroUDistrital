@@ -1,6 +1,12 @@
 .hide {
   display: none;
 }
+.h_activities{
+  background-color: #f6fffc;
+}
+.c_actividad{
+  border-radius: 3%;
+}
 .c_actividad, .h_activities {
   display: flex;
   justify-content: space-around;
@@ -8,20 +14,29 @@
 .c_actividad div, .h_activities div {
   padding: 5px 5px;
 }
+.c_actividad:nth-child(2n+1){
+  background-color: #edf1f7;
+}
 .c_actividad div:nth-child(1) , .h_activities div:nth-child(1){
   width: 10%;
 }
 .c_actividad div:nth-child(2) ,.c_actividad  div:nth-child(3),
 .h_activities div:nth-child(2),.h_activities div:nth-child(3)
 {
-  width: 30%;
+  width: 25%;
   text-align: left;
 }
-.c_actividad div:nth-child(4) , .h_activities div:nth-child(4),
-.c_actividad div:nth-child(5) , .h_activities div:nth-child(5)
+.c_actividad div:nth-child(4) , .h_activities div:nth-child(4){
+  width: 20%;
+}
+.c_actividad div:nth-child(5) , .h_activities div:nth-child(5),
+.c_actividad div:nth-child(6) , .h_activities div:nth-child(6)
 {
   width: 10%;
 }
 .c_actividad div p{
   margin: 0;
+}
+footer{
+  padding-top: 20px;
 }
