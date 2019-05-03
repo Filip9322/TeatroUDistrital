@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   server:
     build:
@@ -24,3 +24,19 @@ services:
       - server
     ports:
       - "3000:3000"
+  flyay:
+    image: boxfuse/flyway:5.2.1
+    command: -url=jdbc:mysql://db -schemas=mvw -user=root -password=P@ssw0rd -connectRetries=60 migrate
+    volumes:
+      - ./sql:/flyway/sql
+    container_name: flyway_db
+    depends_on:
+      - db
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+    ports:
+      - 3306:3306
+    container_name: mysql_db
