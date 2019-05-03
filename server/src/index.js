@@ -4,6 +4,8 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const salasRouter = require('./routes/salas');
+const responsableRouter = require('./routes/responsable');
+const actividadesRouter = require('./routes/actividades');
 
 
 // Constants
@@ -31,6 +33,8 @@ app.get('/api', (req, res) => {
 
 //ENDPOINT SALAS
 app.use('/salas', salasRouter);
+app.use('/responsables', responsableRouter);
+app.use('/actividades', actividadesRouter);
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
