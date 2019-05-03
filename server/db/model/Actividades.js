@@ -25,7 +25,7 @@ const Actividades = connection.Sequelize.define('actividad', {
     }
 }, {
     timestamps: true,
-    createdAt: 'fecha_creacion',
+    fecha_creacion: 'fecha_creacion',
     tableName: 'teatro_actividades'
 });
 

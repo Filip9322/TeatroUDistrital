@@ -3,6 +3,8 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const salasRouter = require('./routes/salas');
+
 
 // Constants
 const PORT = process.env.PORT || 8080;
@@ -26,6 +28,9 @@ app.get('/api', (req, res) => {
   };
   res.send(JSON.stringify(data, null, 2));
 });
+
+//ENDPOINT SALAS
+app.use('/salas', salasRouter);
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {

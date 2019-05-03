@@ -1,7 +1,7 @@
 {
   "name": "ui",
   "version": "0.1.0",
-  "proxy": "http://server:8080",
+  "proxy": "http://mvw_server:8080",
   "private": true,
   "dependencies": {
     "node-sass": "^4.7.2",

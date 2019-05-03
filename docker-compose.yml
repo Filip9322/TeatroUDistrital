@@ -4,6 +4,7 @@ services:
     build:
       context: ./server/
     command: /usr/app/node_modules/.bin/nodemon src/index.js
+    container_name: mvw_server
     volumes:
       - ./server/:/usr/app
       - /usr/app/node_modules
@@ -41,4 +42,4 @@ services:
       - MYSQL_ROOT_PASSWORD=P@ssw0rd
     ports:
       - 3306:3306
-    container_name: mysql_db
+    container_name: mvw_db
