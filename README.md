@@ -1,8 +1,9 @@
-
-Node + Create React App + Docker Compose
+Prueba Tecnica con la Universidad Distrital: MERM MySQL + Express + Create React App + Node+  Docker Compose
 ========================================
 
-A project that runs a Node server and a create-react-app app via two separate containers, using Docker Compose.
+![Alt text](./screen.png?raw=true "Title")
+
+This project runs over Node as server and a create-react-app as client app via two separate containers, using Docker Compose.
 
 
 ## Development
