@@ -13,6 +13,8 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - flyway
   client:
     build:
       context: ./client/
@@ -24,12 +26,12 @@ services:
       - server
     ports:
       - "3000:3000"
-  flyay:
+  flyway:
     image: boxfuse/flyway:5.2.1
+    container_name: mvw_flyway
     command: -url=jdbc:mysql://db -schemas=mvw -user=root -password=P@ssw0rd -connectRetries=60 migrate
     volumes:
       - ./sql:/flyway/sql
-    container_name: flyway_db
     depends_on:
       - db
   db:

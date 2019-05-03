@@ -4,4 +4,4 @@ CREATE TABLE  teatro_salas (
   horario        TEXT     NOT NULL,
   capacidad      int(5)   NOT NULL,
   PRIMARY KEY(id)
-)
+);

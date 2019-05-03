@@ -1,5 +1,5 @@
 {
-  "name": "prueba tecnica teatro U distrital",
+  "name": "prueba-tecnica-teatro-U-distrital",
   "version": "1.0.0",
   "description": "A reference for running a node server and create-react-app app via docker-compose.",
   "main": "src/index.js",
@@ -9,9 +9,9 @@
   },
   "author": "Soulfilip",
   "dependencies": {
+    "express": "^4.16.2",
     "bcryptjs": "2.4.3",
     "debug": "~2.6.9",
-    "express": "4.16.4",
     "http-errors": "1.6.2",
     "jsonwebtoken": "8.4.0",
     "morgan": "1.9.1",

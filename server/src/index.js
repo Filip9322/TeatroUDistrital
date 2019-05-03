@@ -1,5 +1,6 @@
 'use strict';
 
+const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 
@@ -11,6 +12,8 @@ const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
 
 // App
 const app = express();
+//app.use(logger('dev'));
+app.use(express.json());
 
 // Static files
 app.use(express.static(CLIENT_BUILD_PATH));

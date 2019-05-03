@@ -7,4 +7,4 @@ CREATE TABLE  teatro_responsables (
   telefono       TEXT     NOT NULL,
   fecha_creacion datetime NOT NULL,
   PRIMARY KEY(id)
-)
+);

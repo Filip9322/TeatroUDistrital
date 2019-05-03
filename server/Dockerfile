@@ -1,4 +1,4 @@
-FROM node:11-alpine
+FROM node:9.4.0-alpine
 
 WORKDIR /usr/app
 
@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["node", "src/index.js"]
+CMD ["npm", "start"]
