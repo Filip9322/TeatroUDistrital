@@ -1,0 +1,24 @@
+.c_actividad, .h_activities {
+  display: flex;
+  justify-content: space-around;
+}
+.c_actividad div, .h_activities div {
+  padding: 5px 5px;
+}
+.c_actividad div:nth-child(1) , .h_activities div:nth-child(1){
+  width: 10%;
+}
+.c_actividad div:nth-child(2) ,.c_actividad  div:nth-child(3),
+.h_activities div:nth-child(2),.h_activities div:nth-child(3)
+{
+  width: 30%;
+  text-align: left;
+}
+.c_actividad div:nth-child(4) , .h_activities div:nth-child(4),
+.c_actividad div:nth-child(5) , .h_activities div:nth-child(5)
+{
+  width: 10%;
+}
+.c_actividad div p{
+  margin: 0;
+}
