@@ -8,8 +8,12 @@ class TheatreActivities extends Component{
     this.state = {
       activities:{},
       responsables:{},
-      rooms:{}
+      rooms:{},
+      responsable:'',
+      sala:''
     }
+    this.modifyFilterResponsable = this.modifyFilterResponsable.bind(this)
+    this.modifyFilterSala        = this.modifyFilterSala.bind(this)
   }
   componentDidMount(){
     this.getActivities()
@@ -22,19 +26,36 @@ class TheatreActivities extends Component{
       .then(rooms => this.setState({rooms}))
       .catch(console.error);
   }
+  modifyFilterResponsable(filterId){
+    const responsable = filterId.target.value
+    this.setState({responsable})
+  }
+  modifyFilterSala(filterId){
+    const sala = filterId.target.value
+    this.setState({sala})
+  }
   render(){
-    const activities   = this.state.activities
-    const responsables = this.state.responsables
-    const rooms        = this.state.rooms
+    const activities     = this.state.activities
+    const responsables   = this.state.responsables
+    const rooms          = this.state.rooms
+    const {modifyFilterResponsable, modifyFilterSala} = this
     return(
       <section>
         <h2>Actividades</h2>
-        <ActivitiesHeader responsables={responsables} salas={rooms} />
+        <p>{this.state.responsable}</p>
+        <ActivitiesHeader responsables={responsables}
+                          salas={rooms}
+                          onChangeResponsable={modifyFilterResponsable}
+                          onChangeSala = {modifyFilterSala}/>
         {Object.entries(activities).map((n,i) => {
             const objResponsable = Object.values(responsables).find(o => o.id === activities[i].responsable)
             const objRoom        = Object.values(rooms).find(o => o.id === activities[i].sala)
             return(
-              <Actividad key={i} actividad={activities[i]} responsable={objResponsable} sala={objRoom}/>
+              <Actividad key={i}
+                         actividad={activities[i]}
+                         responsable={objResponsable}
+                         sala={objRoom}
+                         filterResponsable={this.state.responsable}/>
             )
           })
         }

@@ -1,8 +1,10 @@
 import React from 'react'
 
-export const Actividad = ({actividad={}, responsable={}, sala ={}}) =>{
-  const fechaCreacion = actividad.fecha_creacion.split("T")[0]
-  const fechaLimite   = actividad.fecha_limite.split("T")[0]
+export const Actividad = ({actividad={}, responsable={}, sala ={}, filterResponsable=''}) =>{
+  const fechaCreacion     = actividad.fecha_creacion.split("T")[0]
+  const fechaLimite       = actividad.fecha_limite.split("T")[0]
+
+  if (filterResponsable == actividad.responsable || filterResponsable == ''){
   return(
     <div className="c_actividad">
       <div>
@@ -26,6 +28,8 @@ export const Actividad = ({actividad={}, responsable={}, sala ={}}) =>{
       </div>
     </div>
   )
+}else{
+  return ''}
 }
 
 export const Responsable = ({responsable={}}) =>{
@@ -52,33 +56,35 @@ export const Sala = ({sala={}}) => {
   )
 }
 
-export const ActivitiesHeader =({responsables={}, salas={}}) =>{
+export const ActivitiesHeader =({responsables={}, salas={}, onChangeResponsable=f=>f, onChangeSala =f=>f}) =>{
   //console.log(salas)
   return(
-    <div className="h_activities">
-      <div><strong><p>ID</p></strong></div>
-      <div><strong><p>Nombre y Descripción</p></strong></div>
-      <div><strong><p>Fecha de Creación & Fecha límite</p></strong></div>
-      <div>
-        <strong><p>Responsable</p></strong>
-        <select name ="filterResponsable">
-          <option disabled value="">Responsable</option>
-          {Object.values(responsables).map((n,i)=>
-            <option key={i} value={n.id} >{n.nombres} {n.apellidos}</option>
-          )}
-          }
-        </select>
+    <form>
+      <div className="h_activities">
+        <div><strong><p>ID</p></strong></div>
+        <div><strong><p>Nombre y Descripción</p></strong></div>
+        <div><strong><p>Fecha de Creación & Fecha límite</p></strong></div>
+        <div>
+          <strong><p>Responsable</p></strong>
+          <select name ="filterResponsable" onChange={(filterId) => onChangeResponsable(filterId)}>
+            <option value="">Todos los responsables</option>
+            {Object.values(responsables).map((n,i)=>
+              <option key={i} value={n.id} >{n.nombres} {n.apellidos}</option>
+            )}
+            }
+          </select>
+        </div>
+        <div>
+          <strong><p>Sala</p></strong>
+          <select name ="filterSala" onChange={(filterId) => onChangeSala(filterId)} className="hide">
+            <option value="" >Todas las Salas</option>
+            {Object.values(salas).map((n,i)=>
+              <option key={i} value={n.id} >{n.nombre}</option>
+            )}
+            }
+          </select>
+        </div>
       </div>
-      <div>
-        <strong><p>Sala</p></strong>
-        <select name ="filterSala">
-          <option disabled value="">Sala</option>
-          {Object.values(salas).map((n,i)=>
-            <option key={i} value={n.id} >{n.nombre}</option>
-          )}
-          }
-        </select>
-      </div>
-    </div>
+    </form>
   )
 }
