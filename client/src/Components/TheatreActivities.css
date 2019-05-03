@@ -1,3 +1,6 @@
+.hide {
+  display: none;
+}
 .c_actividad, .h_activities {
   display: flex;
   justify-content: space-around;

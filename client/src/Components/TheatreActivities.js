@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import './TheatreActivities.css'
 
-const Actividad = ({actividad={}, responsable={}}) =>{
-  console.log(responsable)
+const Actividad = ({actividad={}, responsable={}, sala ={}}) =>{
+  const fechaCreacion = actividad.fecha_creacion.split("T")[0]
+  const fechaLimite   = actividad.fecha_limite.split("T")[0]
   return(
     <div className="c_actividad">
       <div>
@@ -13,15 +14,41 @@ const Actividad = ({actividad={}, responsable={}}) =>{
         <p><strong>Descripción:</strong> {actividad.descripcion}</p>
       </div>
       <div>
-        <p><strong>F. Creación:</strong> {actividad.fecha_creacion}</p>
-        <p><strong>F. Límite:</strong> {actividad.fecha_limite}</p>
+        <p><strong>F. Creación:</strong> {fechaCreacion}</p>
+        <p><strong>F. Límite:</strong> {fechaLimite}</p>
       </div>
       <div>
-        <span>{responsable.nombres} {responsable.apellidos}</span>
+        <span><a href="#">{responsable.nombres} {responsable.apellidos}</a></span>
+        <Responsable responsable={responsable}/>
       </div>
       <div>
-        <span>{actividad.sala}</span>
+        <span><a href="#">{sala.nombre}</a></span>
+        <Sala sala={sala} />
       </div>
+    </div>
+  )
+}
+
+const Responsable = ({responsable={}}) =>{
+  return(
+    <div className="hide">
+      <span>{responsable.id}</span>
+      <span>{responsable.nombres}</span>
+      <span>{responsable.apellidos}</span>
+      <span>{responsable.email}</span>
+      <span>{responsable.cargo}</span>
+      <span>{responsable.fecha_creacion}</span>
+    </div>
+  )
+}
+
+const Sala = ({sala={}}) => {
+  return(
+    <div className="hide">
+      <span>{sala.id}</span>
+      <span>{sala.nombre}</span>
+      <span>{sala.horario}</span>
+      <span>{sala.capacidad}</span>
     </div>
   )
 }
@@ -43,7 +70,8 @@ class TheatreActivities extends Component{
     super()
     this.state = {
       activities:{},
-      responsables:{}
+      responsables:{},
+      rooms:{}
     }
   }
   componentDidMount(){
@@ -53,19 +81,23 @@ class TheatreActivities extends Component{
     this.getResponsables()
       .then(responsables => this.setState({responsables}))
       .catch(console.error);
+    this.getRooms()
+      .then(rooms => this.setState({rooms}))
+      .catch(console.error);
   }
   render(){
-    const activities = this.state.activities
+    const activities   = this.state.activities
     const responsables = this.state.responsables
+    const rooms        = this.state.rooms
     return(
       <section>
         <h2>Actividades</h2>
         <ActivitiesHeader />
         {Object.entries(activities).map((n,i) => {
-            let idResponsable  = activities[i].responsable
-            let objResponsable = Object.values(responsables).find(o => o.id == idResponsable)
+            const objResponsable = Object.values(responsables).find(o => o.id === activities[i].responsable)
+            const objRoom        = Object.values(rooms).find(o => o.id === activities[i].sala)
             return(
-              <Actividad key={i} actividad={activities[i]} responsable={objResponsable}/>
+              <Actividad key={i} actividad={activities[i]} responsable={objResponsable} sala={objRoom}/>
             )
           })
         }
@@ -95,6 +127,26 @@ class TheatreActivities extends Component{
 
   getResponsables = async () => {
     const resp = await fetch('/responsables/me');
+
+    window._resp = resp;
+    let text = await resp.text();
+    let data = null;
+
+    try {
+      data = JSON.parse(text); // cannot call both .json and .text - await resp.json();
+    } catch (e) {
+      console.err(`Invalid json\n${e}`);
+    }
+
+    if (resp.status !== 200) {
+      throw Error(data ? data.message : 'No data');
+    }
+
+    return data;
+  }
+
+  getRooms = async () => {
+    const resp = await fetch('/salas/me');
 
     window._resp = resp;
     let text = await resp.text();
