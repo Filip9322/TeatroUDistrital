@@ -60,7 +60,6 @@ export const Sala = ({sala={}}) => {
 }
 
 export const ActivitiesHeader =({responsables={}, salas={}, onChangeResponsable=f=>f, onChangeSala =f=>f}) =>{
-  //console.log(salas)
   return(
     <form>
       <div className="h_activities">
